@@ -1,0 +1,27 @@
+// we are using proto3
+syntax = "proto3"
+
+/*
+    we are using a multiple comment
+*/
+
+message Person {
+
+    int32 age = 1;
+    string first_name = 2;
+    string last_name = 3;
+    bytes small_pic = 4;    // this is a samll pic .jpg
+    bool is_profile_verfied = 5;
+    float height = 6;       // this is the height os a person in cms 
+
+    repeated string phone_numbers = 7;
+
+    enum EyeColor {
+        UNKOWN_EYE_COLOR = 0;
+        EYE_GREEN = 1;
+        EYE_BLUE = 2;
+        EYE_BROWN = 3;
+    }
+
+    EyeColor eye_color = 8;
+}
