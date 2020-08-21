@@ -1,9 +1,9 @@
 // we are using proto3
 syntax = "proto3";
 
-/*
-    we are using a multiple comment
-*/
+import "section4/4-date-with-package.proto";
+
+package person;
 
 message Person {
 
@@ -25,12 +25,17 @@ message Person {
 
     EyeColor eye_color = 8;
 
-    Date BirthDate = 9;
-    
-}
+    my.date.Date BirthDate = 9;
 
-message Date{
-    int32 Year = 1;
-    int32 Month = 2;
-    int32 Day = 3;
+    message Address {
+        string address_line_1 = 1;
+        string address_line_2 = 2;
+        string zip_code = 3;
+        string city = 4;
+        string country = 5;
+
+    }
+
+    repeated Address addresses = 10; 
+
 }
