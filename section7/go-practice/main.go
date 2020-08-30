@@ -1,8 +1,9 @@
 package main
 
 import (
-	"C:\Users/vegon/Desktop/development/protobuf/section7/go-practice/src/simple/simple.pb.go",
 	"fmt"
+
+	simplepb "github.com/ahmed-bahaa/protobuf/section7/go-practice/src/simple"
 )
 
 func main() {
@@ -11,5 +12,13 @@ func main() {
 }
 
 func doSimple() {
-	sm := example_simple.SimpleMessage{}
+	sm := simplepb.SimpleMessage{
+		Id:         123,
+		IsSimple:   true,
+		Name:       "simple Message",
+		SampleList: []int32{1, 2, 3, 4},
+	}
+
+	fmt.Println(sm)
+	fmt.Println("This is the ID: ", sm.GetId())
 }
