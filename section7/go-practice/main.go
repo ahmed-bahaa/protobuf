@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 
+	enumpb "github.com/enum"
+
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
@@ -21,6 +23,17 @@ func main() {
 	fmt.Println("__________End____________")
 
 	jsonDemo(sm)
+
+	doEnum()
+}
+
+func doEnum() {
+	ep := enumpb.PersonMessage{
+		Id:       6,
+		EyeColor: enumpb.EyeColor_EYE_BROWN,
+	}
+
+	fmt.Println(ep)
 }
 
 func jsonDemo(sm proto.Message) {

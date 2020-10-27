@@ -1,0 +1,18 @@
+// we are using proto3
+syntax = "proto3";
+
+option go_package = "enumpb";
+
+message PersonMessage {
+
+    int32 id = 1;
+    EyeColor eye_color = 2;
+
+}
+
+  enum EyeColor {
+        UNKOWN_EYE_COLOR = 0;
+        EYE_GREEN = 1;
+        EYE_BLUE = 2;
+        EYE_BROWN = 3;
+    }
