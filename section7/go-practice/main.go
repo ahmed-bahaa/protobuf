@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
 	simplepb "github.com/simple"
@@ -18,6 +19,35 @@ func main() {
 	fmt.Println("______________________")
 	readAndWriteDemo(sm)
 	fmt.Println("__________End____________")
+
+	jsonDemo(sm)
+}
+
+func jsonDemo(sm proto.Message) {
+	simpleMessageAsJson := toJSON(sm)
+	fmt.Println(simpleMessageAsJson)
+
+	myMessagePointer := &simplepb.SimpleMessage{}
+	fromJson(simpleMessageAsJson, myMessagePointer)
+	fmt.Println("transformed text: ", myMessagePointer)
+}
+
+func fromJson(in string, pb proto.Message) {
+	err := protojson.Unmarshal([]byte(in), pb)
+	if err != nil {
+		log.Fatalln("couldn't encode the Pb to string", err)
+	}
+}
+
+func toJSON(pb proto.Message) string {
+	// marshaler := jsonpb.Marshaler{}
+	// out, err := marshaler.MarshalToString(pb)
+	b, err := protojson.Marshal(pb)
+	if err != nil {
+		log.Fatalln("couldn't encode the Pb to string", err)
+		return ""
+	}
+	return string(b)
 }
 
 func readAndWriteDemo(sm proto.Message) {
