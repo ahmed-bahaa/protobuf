@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+option go_package = "complexpb";
+
+message ComplexMessage {
+    string name = 1;
+    DummyMessage myMessage = 2;
+    repeated DummyMessage myHist = 3;
+}
+
+message DummyMessage {
+    string title = 1;
+    string content  = 2;
+}

@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 
+	complexpb "github.com/complexMess"
 	enumpb "github.com/enum"
 
 	"google.golang.org/protobuf/encoding/protojson"
@@ -25,6 +26,30 @@ func main() {
 	jsonDemo(sm)
 
 	doEnum()
+
+	doComplex()
+}
+
+func doComplex() {
+	cm := complexpb.ComplexMessage{
+		Name: "bahaa",
+		MyMessage: &complexpb.DummyMessage{
+			Title:   "HELLO",
+			Content: "this is my message",
+		},
+		MyHist: []*complexpb.DummyMessage{
+			&complexpb.DummyMessage{
+				Title:   "HELLO2",
+				Content: "this is my message",
+			},
+			&complexpb.DummyMessage{
+				Title:   "HELLO3",
+				Content: "this is my message",
+			},
+		},
+	}
+
+	fmt.Println(cm)
 }
 
 func doEnum() {
