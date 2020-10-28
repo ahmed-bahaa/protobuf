@@ -1,0 +1,8 @@
+proto buff docs:
+https://developers.google.com/protocol-buffers/docs/gotutorial
+
+GOGO best practice:
+https://jbrandhorst.com/post/gogoproto/
+
+Uber:
+https://github.com/uber/prototool/blob/dev/etc/style/uber1/uber1.proto
